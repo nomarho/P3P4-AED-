@@ -205,5 +205,20 @@ names(flights)
 names(planes)
 
 ```
+#### Ejercicio 10
+
+**Incorpora una nueva variable a flights denominado Full_Date que sea de tipo character que incorpore una cadena de texto de la forma d-m-Y. Donde d indica día, m mes e Y año, a partir de la información incluida en el data frame. Utiliza una función de DPLYR que permita conseguir este propósito. Elimina las variables originales involucradas en la creación de la nueva variable.**
+
+```{r, echo = TRUE}
+
+#Creamos la variable Full_Date uniendo day, month, year
+
+flights <- mutate(flights, Full_Date = paste(day, month, year, sep = "-"))
+
+#Eliminamos las variables originales involucradas
+
+flights <- select(flights, -day, -month, -year)
+
+```
 
 
