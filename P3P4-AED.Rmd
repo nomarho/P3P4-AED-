@@ -52,4 +52,30 @@ head(billboard.tidy)
 str(billboard.tidy)
 
 ```
+#### Ejercicio 3
+
+**Convierte el conjunto de datos TB en tidy utilizando gather y separate.**
+
+```{r, echo=TRUE}
+
+#Cargamos los datos de tuberculosis
+
+load("data/tb.Rdata")
+
+names(raw)
+
+#Reunimos las columnas demográficas en dos columnas
+
+tb.tidy <- gather(raw, key = "grupo", value = "casos", -country, -year)
+
+#Separamos el grupo en sexo y edad
+
+tb.tidy <- separate(tb.tidy, col = "grupo", into = c("sexo", "edad"), sep = 1)
+
+#Comprobamos el resultado
+head(tb.tidy)
+str(tb.tidy)
+
+
+```
 
