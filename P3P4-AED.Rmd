@@ -106,7 +106,7 @@ str(weather.tidy)
 
 **Muestra las primeras muestras de ambos data frames para hacerte una idea de las variables que contienen. ¿Qué diferencia existe entre la información mostrada en ambos data frames? **
 
-```{r}
+```{r, echo=TRUE}
 
 #Cargamos los datos de vuelos y aviones
 
@@ -123,6 +123,33 @@ head(flights)
 head(planes)
 
 #El data frame flights contiene información de cada vuelo, como la fecha, el origen, el destino y el avión utilizado mientras que el de planes contiene información sobre las características de los aviones, como el fabricante, el modelo y el número de asientos.
+
+```
+#### Ejercicio 6
+
+**Aplica las dos operaciones de filtrado secuencialmente utilizando el operador pipe y almacena el data frame resultante en planes.f. En el data frame resultante unifica las denominaciones del fabricante AIRBUS bajo la denominación "AIRBUS COMP".**
+
+```{r, echo=TRUE}
+
+unique(planes$manufacturer) #para ver comos e escribe
+
+planes.f <- planes %>% #El operador pipe pa concatenar las funciones
+  filter(!grepl("MCDONNELL DOUGLAS", manufacturer, ignore.case = TRUE)) %>% 
+  
+  #Seleccionamos aviones con asientos entre 90 y 210 
+  
+  filter(seats >= 90 & seats <= 210) %>% 
+  
+  #Unificamos las variantes de AIRBUS bajo "AIRBUS COMP"
+  
+  mutate(manufacturer = ifelse(grepl("AIRBUS", manufacturer, ignore.case = TRUE), "AIRBUS COMP", manufacturer))
+
+#Verificamos
+
+unique(planes.f$manufacturer)
+summary(planes.f$seats)
+head(planes.f)
+str(planes.f)
 
 ```
 
