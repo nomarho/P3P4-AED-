@@ -97,9 +97,32 @@ weather.tidy <- pivot_wider(weather.tidy, names_from = "element", values_from = 
 #Unimos año, mes y día en una única columna fecha
 weather.tidy <- unite(weather.tidy, col = "fecha", year, month, dia,sep = "-")
 
-# Comprobamos el resultado.
+#Comprobamos el resultado
 head(weather.tidy)
 str(weather.tidy)
+
+```
+#### Ejercicio 5
+
+**Muestra las primeras muestras de ambos data frames para hacerte una idea de las variables que contienen. ¿Qué diferencia existe entre la información mostrada en ambos data frames? **
+
+```{r}
+
+#Cargamos los datos de vuelos y aviones
+
+load("data/VuelosNY.Rdata")
+
+ls()
+
+#Mostramos las primeras filas de flights
+
+head(flights)
+
+#Mostramos las primeras filas de planes
+
+head(planes)
+
+#El data frame flights contiene información de cada vuelo, como la fecha, el origen, el destino y el avión utilizado mientras que el de planes contiene información sobre las características de los aviones, como el fabricante, el modelo y el número de asientos.
 
 ```
 
