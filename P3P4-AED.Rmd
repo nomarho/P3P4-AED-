@@ -1,0 +1,35 @@
+---
+title: "Práctica 3 y 4. Preparación y manejo de Datos"
+author: "Noa Martín Hodar"
+date: "2026-10-29"
+output: html_document
+---
+
+### Análisis Exploratorio de Datos, Máster en Ciencia de Datos - UV
+
+#### Ejercicio 1
+
+##### Convierte el dataset pew_religion a formato tidy usando gather. La columna income debe contener una variable de tipo factor.
+
+```{r, echo=TRUE}
+
+#Cargamos las librerías
+
+library(dplyr)
+
+library(tidyr)
+
+#Cargamos el conjunto de datos pew_religion.
+
+load("data/pew_religion.Rdata")
+
+#Convertimos a formato tidy usando gather
+
+pew.tidy <- gather(pew_religion, key = "income", value = "valores",-religion, factor_key = TRUE)
+
+#Comprobamos el resultado y los tipos de las variables
+head(pew.tidy)
+str(pew.tidy)
+
+```
+
