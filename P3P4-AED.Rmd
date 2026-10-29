@@ -167,4 +167,21 @@ flights.f <- inner_join(flights, planes.f, by = "tailnum")
 head(flights.f)
 str(flights.f)
 ```
+#### Ejercicio 8
+
+**Reasigna los nombres de los data frames planes.f y flights.f a los nombres originales planes y flights.**
+
+```{r}
+
+#Reasignamos los data frames modificados a los nombres originales
+
+planes <- planes.f
+
+flights <- flights.f
+
+dim(planes)
+
+dim(flights)
+
+```
 
