@@ -152,4 +152,19 @@ head(planes.f)
 str(planes.f)
 
 ```
+#### Ejercicio 7
+
+**Crea un data frame denominado flights.f que contenga los vuelos que involucren a los aviones presentes en el data frame planes.f. Para ello utiliza algunas de las funciones de XXX_join y la variable tailnum que es común en ambos data frames.**
+
+```{r, echo=TRUE}
+
+#Creamos flights.f uniendo flights con planes.f a través de tailnum
+
+flights.f <- inner_join(flights, planes.f, by = "tailnum")
+
+#Comprobamos el resultado
+
+head(flights.f)
+str(flights.f)
+```
 
