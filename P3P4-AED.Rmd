@@ -78,4 +78,28 @@ str(tb.tidy)
 
 
 ```
+#### Ejercicio 4
+
+**Obtén la versión tidy del conjunto de datos weather utilizando las funciones pivot_longer y pivot_wider. Además cambiaremos las columnas year, month y dia por una única variable fecha. Para que la operación pivot_wider no de error tendremos que eliminar los NA’s cuando usemos pivot_longer.**
+
+```{r, echo=TRUE}
+
+#Cargamos los datos
+load("data/weather.Rdata")
+
+#Reunimos las columnas d1 a d31 en las variables dia y valor
+
+weather.tidy <- pivot_longer(raw, cols = d1:d31, names_to = "dia", names_prefix = "d", values_to = "valor", values_drop_na = TRUE)
+
+#Convertimos tmin y tmax en columnas
+weather.tidy <- pivot_wider(weather.tidy, names_from = "element", values_from = "valor")
+
+#Unimos año, mes y día en una única columna fecha
+weather.tidy <- unite(weather.tidy, col = "fecha", year, month, dia,sep = "-")
+
+# Comprobamos el resultado.
+head(weather.tidy)
+str(weather.tidy)
+
+```
 
