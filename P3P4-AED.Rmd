@@ -171,7 +171,7 @@ str(flights.f)
 
 **Reasigna los nombres de los data frames planes.f y flights.f a los nombres originales planes y flights.**
 
-```{r}
+```{r, echo=TRUE}
 
 #Reasignamos los data frames modificados a los nombres originales
 
@@ -184,4 +184,26 @@ dim(planes)
 dim(flights)
 
 ```
+#### Ejercicio 9
+
+**En el data frame flights quédate con todas las variables excepto time_hour y las variables que terminan con la palabra “time”. En el data frame planes quédate con todas las variables excepto speed y type.**
+
+```{r, echo=TRUE}
+
+#Modificamos flights excluyendo time_hour y las que terminan en "time"
+
+flights <- select(flights, -time_hour, -ends_with("time"))
+
+#Modificamos planes excluyendo speed y type
+
+planes <- select(planes, -speed, -type)
+
+#Comprobamos los cambios 
+
+names(flights)
+
+names(planes)
+
+```
+
 
